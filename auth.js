@@ -25,10 +25,12 @@ const toggleLogin = () => {
     $('#logoutButton').show()
     $('#loginModal').modal('hide')
     $('#signupModal').modal('hide')
+    $('#pagesButton').show()
   } else {
     $('#signupButton').show()
     $('#loginButton').show()
     $('#logoutButton').hide()
+    $('#pagesButton').hide()
   }
 }
 

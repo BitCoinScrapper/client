@@ -64,5 +64,10 @@ const getBitflyerData = () => {
       })
 }
 
+$(document).ready(() => {
+  if (!localStorage.token) {
+    windows.location.replace("http://localhost:8080")
+  }
+})
 $(document).ready(getBitflyerData())
 $(document).ready(setInterval(getBitflyerData, 5000))
