@@ -64,5 +64,5 @@ const getBitflyerData = () => {
       })
 }
 
-$('document').ready(getBitflyerData())
-// $('document').ready(setInterval(getBitflyerData(), 5000))
+$(document).ready(getBitflyerData())
+$(document).ready(setInterval(getBitflyerData, 5000))
