@@ -13,42 +13,42 @@
     <script type="text/javascript">
         google.charts.load('current', {'packages':['corechart']});
         google.charts.setOnLoadCallback(drawChart);
-  
+        
         function drawChart() {
-          $.ajax({
-              method : 'GET',
-              url : 'https://api.coindesk.com/v1/bpi/historical/close.json'
-          })
-          .done( data =>{
-              let title = ['Day','coindesk'] 
-              let bpi = JSON.parse(data).bpi
-              let date = JSON.parse(data).bpi
-              let format = Object.entries( date)
-              format.unshift(title)
-              var data = google.visualization.arrayToDataTable(format);
-  
-              var options = {
-              title: 'Bitcoin Price Index',
-              hAxis: {title: 'day',  titleTextStyle: {color: '#333'}},
-              vAxis: {minValue: 0}
-              };
-  
-              var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
-              chart.draw(data, options);
-              
-          })
-          .fail( error => {
-              console.log( error )
-          })
-  
+            $.ajax({
+                method : 'GET',
+                url : 'https://api.coindesk.com/v1/bpi/historical/close.json'
+            })
+            .done( data =>{
+                let title = ['Day','coindesk'] 
+                let bpi = JSON.parse(data).bpi
+                let date = JSON.parse(data).bpi
+                let format = Object.entries( date)
+                format.unshift(title)
+                var data = google.visualization.arrayToDataTable(format);
+                
+                var options = {
+                    title: 'Bitcoin Price Index',
+                    hAxis: {title: 'day',  titleTextStyle: {color: '#333'}},
+                    vAxis: {minValue: 0}
+                };
+                
+                var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+                chart.draw(data, options);
+                
+            })
+            .fail( error => {
+                console.log( error )
+            })
+            
         }
-    </script>
+        </script>
 </head>
 <body>
-
-<!-- NAVBAR -->
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4 align-items-center">
+    
+    <!-- NAVBAR -->
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4 align-items-center">
         <div class="container">
             <li class="navbar-brand">BitcoinScanner</li>
             <ul class="navbar-nav ml-auto">
@@ -64,7 +64,7 @@
             </ul>
         </div>
     </nav>
-
+    
     <!-- Signup Modal -->
     <div class="modal fade" id="signupModal" tabindex="-1">
         <div class="modal-dialog">
@@ -86,29 +86,30 @@
                             <input type="email" class="form-control" id="registerEmail" placeholder="Enter username or email">
                             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
                                 else.</small>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputPassword">Password</label>
-                            <input type="password" class="form-control" id="registerPassword" placeholder="Password">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Signup</button>
-                    </form>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPassword">Password</label>
+                                <input type="password" class="form-control" id="registerPassword" placeholder="Password">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Signup</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- Login Modal -->
-    <div class="modal fade" id="loginModal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Login</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
+        
+        <!-- Login Modal -->
+        <div class="modal fade" id="loginModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                            
                     <form id="loginForm">
                         <div class="form-group">
                             <label for="inputEmail">Username / Email address</label>
@@ -157,7 +158,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
-
+    
     <script>
         const scrapper = () => {
             $.ajax({
@@ -192,6 +193,7 @@
 
         $(document).ready(function(){
             scrapper()
+            toggleLogin()
         })
     </script>
 
